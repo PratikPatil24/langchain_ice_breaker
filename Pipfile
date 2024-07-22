@@ -8,6 +8,7 @@ langchain-community = "*"
 tavily-python = "*"
 langchain = "*"
 langchainhub = "*"
+flask = "*"
 
 [dev-packages]
 
