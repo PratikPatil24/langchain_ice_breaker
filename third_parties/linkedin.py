@@ -66,6 +66,7 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
             ],
             "connections": 500,
         }
+        return response
     else:
         api_endpoint = "https://nubela.co/proxycurl/api/v2/linkedin"
         header_dic = {"Authorization": f'Bearer {os.environ.get("PROXYCURL_API_KEY")}'}
@@ -76,17 +77,17 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
             timeout=10,
         )
 
-    data = response.json()
-    data = {
-        k: v
-        for k, v in data.items()
-        if v not in ([], "", "", None)
-        and k not in ["people_also_viewed", "certifications"]
-    }
-    if data.get("groups"):
-        for group_dict in data.get("groups"):
-            group_dict.pop("profile_pic_url")
-    return data
+        data = response.json()
+        data = {
+            k: v
+            for k, v in data.items()
+            if v not in ([], "", "", None)
+               and k not in ["people_also_viewed", "certifications"]
+        }
+        if data.get("groups"):
+            for group_dict in data.get("groups"):
+                group_dict.pop("profile_pic_url")
+        return data
 
 
 if __name__ == "__main__":
