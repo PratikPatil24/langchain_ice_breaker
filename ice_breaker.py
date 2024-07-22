@@ -21,7 +21,9 @@ if __name__ == "__main__":
     2. two interesting facts about them
     """
 
-    summary_prompt = PromptTemplate(input_variables=["information"], template=summary_prompt_template)
+    summary_prompt = PromptTemplate(
+        input_variables=["information"], template=summary_prompt_template
+    )
 
     llm = ChatOpenAI(temperature=0, model_name="gpt-4o-2024-05-13")
     # llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
