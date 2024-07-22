@@ -10,7 +10,9 @@ from output_parsers import summary_parser
 
 def ice_break_with(name: str) -> str:
     linkedin_url = lookup(name)
-    linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_url, mock=True)
+    linkedin_data = scrape_linkedin_profile(
+        linkedin_profile_url=linkedin_url, mock=True
+    )
 
     print(linkedin_data)
     summary_prompt_template = """
